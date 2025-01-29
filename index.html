@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/blood.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Analyse des systèmes éducatifs
+#### Introduction
+
+Nathanaël Friant
+
+2024-2025
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Objectifs 
+
+Au terme de ce cours, vous serez capables de 
+- Situer votre action au sein d’un système éducatif dont vous comprendrez les enjeux en termes d’organisation
+- Définir les concepts fondamentaux en lien avec l’analyse des systèmes éducatifs
+- Distinguer les approches méthodologiques utilisées dans l’analyse des systèmes éducatifs
+- Comprendre des résultats de recherches sur les systèmes éducatifs
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Les systèmes éducatifs comme systèmes complexes
+
+<img src="https://i0.wp.com/mrmacintosh.com/wp-content/uploads/2024/08/Screenshot-2024-08-05-at-5.37.59%E2%80%AFPM.png?w=1680&ssl=1" alt="" style="object-fit: scale-down">
+
+
+<aside class="notes"><p>&quot;Pour comprendre ce qu&#39;est un système complexe, imaginons une forêt. À première vue, on pourrait penser qu&#39;une forêt n&#39;est qu&#39;une collection d&#39;arbres. Mais c&#39;est bien plus que cela.</p>
+<p>Observons ce qui se passe quand un vieil arbre meurt et tombe. Cette chute crée une trouée dans la canopée, laissant passer plus de lumière. De jeunes pousses, qui attendaient leur chance dans l&#39;ombre, se mettent à grandir rapidement. Ces nouveaux arbres attirent différents oiseaux, qui apportent de nouvelles graines. Le bois mort se décompose, nourrissant les champignons du sol qui, à leur tour, aident d&#39;autres arbres à mieux absorber les nutriments.</p>
+<p>Voilà ce qui caractérise un système complexe : des éléments qui interagissent constamment, où chaque changement déclenche une cascade d&#39;effets. Ces interactions créent des comportements qu&#39;on ne peut pas prédire en étudiant chaque élément séparément. La forêt n&#39;est pas une simple addition d&#39;arbres, d&#39;animaux et de champignons - c&#39;est leur danse collective qui crée un système vivant et dynamique.</p>
+<p>Le plus fascinant est que personne ne &quot;dirige&quot; ce système. Il s&#39;auto-organise à travers ces innombrables interactions. C&#39;est comme si la forêt était un orchestre sans chef, où chaque musicien réagit aux autres pour créer une symphonie naturelle.&quot;</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Les inégalités éducatives
+
+
+<img src="https://media.licdn.com/dms/image/v2/C4D12AQFQNGoBBFADRw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1591693627438?e=2147483647&v=beta&t=G8nVAVGn_88ebAExm0YEnOETqQhPq1Xb90gDRasKcqE" alt="|600" style="width: 600px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Objectifs plus spécifiques qui découlent de cette approche
+
+- Mobiliser des compétences de modélisation pour mieux comprendre un système éducatif
+- Interpréter des résultats de recherche en adoptant une perspective systémique
+- Concevoir une modélisation multi-agents pour explorer un aspect spécifique du système éducatif en lien avec les inégalités scolaires
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Structure du cours 
+
+1. Introduction: acteurs et interactions
+2. Inégalités scolaires et systèmes ségrégatifs
+3. Le quasi-marché scolaire et ses effets
+4. Modéliser et simuler un système complexe
+5. Parcours scolaires et orientation
+6. Redoublement et dysfonctionnements du système
+7. Politiques de compensation des inégalités scolaires
+8. Comparaisons internationales
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Supports de cours sur l'UV
+
+- Supports de présentations
+- Articles de référence à lire
+- Activités individuelles à faire obligatoirement
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Livres de référence
+
+[Felouzis, G. (2020). Les inégalités scolaires. Presses Universitaires de France](https://www-cairn-info.ezproxy.ulb.ac.be/les-inegalites-scolaires--9782715403536.htm)
+
+[Felouzis, G., & Charmillot, S. (2012). Les enquêtes PISA. Presses Universitaires de France](https://www-cairn-info.ezproxy.ulb.ac.be/les-enquetes-pisa--9782130594574.htm)
+
+Wilensky, U., & Rand, W. (2015). An introduction to agent-based modeling : Modeling natural, social, and engineered complex systems with NetLogo. The MIT press.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Evaluation
+
+- Examen écrit sous forme de QCM et vrai-faux 
+- Participation obligatoire à de brèves activités sur l'UV (QCM, dépôt d'un schéma de modèle...)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Acteurs et interactions
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Modèle écosystémique
+
+<img src="https://rotel.pressbooks.pub/app/uploads/sites/18/2022/12/Ecological-Theory-1024x1024-1.png" alt="image|500" style="width: 500px; object-fit: fill">
+
+© Deirdre Budzyna via. ROTEL 
+
+Notes: 
+- Niveau micro - interactions en classe : Comment les interactions entre élèves et enseignants en classe peuvent-elles influencer les parcours scolaires et les inégalités de réussite ?
+- Niveau méso - l'établissement scolaire : Quels sont les acteurs clés au sein d'un établissement scolaire (direction, enseignants, élèves, parents) et comment leurs interactions influencent-elles le climat scolaire, la ségrégation et les trajectoires des élèves ?
+- Niveau macro - politiques éducatives : Comment les décisions des pouvoirs publics (ministère, administration) influencent-elles les actions des autres acteurs du système éducatif (écoles, enseignants, parents) et les inégalités scolaires ?
+
+### Exemples au niveau micro: 
+- Interactions entre élèves
+	- Effets de pairs
+	- harcèlement
+	- compétition
+	- coopération
+- Interactions enseignants-élèves
+	- Attentes des enseignants
+	- Pratiques d'évaluation
+	- Biais implicites des enseignants
+
+### Exemples au niveau meso
+- Rôle de la direction
+- Image et réputation de l’établissement
+- Climat de l'école
+- Politique de recrutement des enseignants
+- Turnover des enseignants
+- Relations école-famille
+
+### Exemples au niveau macro
+- [ ] Politiques éducatives
+- Règles quant à l’inscription des élèves
+- Financement de l’éducation
+- Politique d’encadrement différencié
+- Tronc commun et filières
+- Médias et opinion publique
+- Ce qu’on dit de l’éducation… 
+- Méritocratie
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Interactions entre niveaux 
+
+
+<img src="https://www.lalibre.be/resizer/v2/K5JR4G3GSFFP3HUVKDQJWIMUXE.jpg?auth=911cd977fff5c366ebd2941087e4533c3ba05cda82e8d012481b2973d8aab778&width=1200&height=800&quality=85&focal=2184%2C1092" alt="|600" style="width: 600px; object-fit: fill">
+
+©Johanna de Tessières
+
+<aside class="notes"><p>prenons l&#39;exemple de l&#39;inscription dans le secondaire. </p>
+<ul>
+<li><p>Connaissez-vous comment ça fonctionne dans notre système? </p>
+</li>
+<li><p>Connaissez-vous les changements qui ont été effectués? </p>
+</li>
+<li><p>Période identique pour tous pour la remise d’un formulaire</p>
+</li>
+<li><p>Liste de préférences établie par les parents</p>
+</li>
+<li><p>Calcul d’un indice composite qui prend en compte notamment</p>
+<ul>
+<li>La préférence</li>
+<li>La distance domicile – école primaire</li>
+<li>La distance domicile – école secondaire choisie</li>
+<li>La distance école primaire – école secondaire</li>
+</ul>
+</li>
+</ul>
+<p>Au niveau du microsystème (l&#39;environnement immédiat de l&#39;élève) :</p>
+<ul>
+<li>Les familles adaptent leurs stratégies de choix d&#39;école</li>
+<li>Les relations parents-enfants peuvent être affectées par le stress lié à l&#39;inscription</li>
+<li>Les dynamiques familiales se modifient (ex: déménagements stratégiques)</li>
+</ul>
+<p>Au niveau du mésosystème (interactions entre microsystèmes) :</p>
+<ul>
+<li>Les écoles modifient leurs relations avec les familles</li>
+<li>Les réseaux sociaux entre parents s&#39;activent pour partager des informations</li>
+<li>Les relations entre écoles évoluent (compétition, réputation)</li>
+</ul>
+<p>Au niveau de l&#39;exosystème :</p>
+<ul>
+<li>Les communes adaptent leur politique de développement (création de nouvelles écoles)</li>
+<li>Les réseaux de transport scolaire sont repensés</li>
+<li>Les associations de parents se mobilisent</li>
+</ul>
+<p>Au niveau du macrosystème :</p>
+<ul>
+<li>Les valeurs de justice sociale et de libre choix entrent en tension</li>
+<li>Les représentations culturelles de &quot;la bonne école&quot; influencent le système</li>
+<li>Les idéologies politiques s&#39;affrontent sur la question</li>
+</ul>
+<p>Ce qui en fait un système complexe, c&#39;est que ces niveaux interagissent de façon non-linéaire. Par exemple :</p>
+<ol>
+<li>Le décret (macrosystème) modifie les stratégies familiales (microsystème)</li>
+<li>Ces stratégies créent de nouveaux réseaux d&#39;entraide (mésosystème)</li>
+<li>Ces réseaux influencent à leur tour l&#39;application du décret</li>
+<li>Des effets émergents apparaissent, comme la ségrégation résidentielle</li>
+</ol>
+<p>Cette complexité fait que des changements à un niveau peuvent avoir des effets inattendus à d&#39;autres niveaux. Par exemple, une modification du calcul de l&#39;indice composite peut transformer les dynamiques de quartier et les relations entre écoles.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Un instant de réflexion
+
+- Quels critères de choix pour les familles? <!-- .element: class="fragment fade-up" -->
+- Comment les écoles réagissent-elles aux décrets? <!-- .element: class="fragment fade-up" -->
+- Comment les familles vont-elles chercher les informations? <!-- .element: class="fragment fade-up" -->
+- Que se passe-t-il entre les écoles? <!-- .element: class="fragment fade-up" -->
+- Quels changements avez-vous observé dans votre commune depuis le décret? <!-- .element: class="fragment fade-up" -->
+- Pourquoi a-t-on créé le décret? <!-- .element: class="fragment fade-up" -->
+- Quelles valeurs entrent en tension au sein de la société avec ce décret? <!-- .element: class="fragment fade-up" -->
+- Si on changeait un aspect du décret, quels effets cela pourrait-il avoir? <!-- .element: class="fragment fade-up" -->
+- Comment les réactions des familles peuvent-elles finir par influencer le décret lui-même ?<!-- .element: class="fragment fade-up" -->
+- Pourquoi est-il si difficile de prévoir tous les effets d'un tel décret ?<!-- .element: class="fragment fade-up" -->
+</div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Effets émergents
+
+<iframe src="https://universitelibrebruxelles-my.sharepoint.com/personal/nathanael_friant_ulb_be/_layouts/15/embed.aspx?UniqueId=74c7fb95-188f-4653-b888-765c8e5f3436&embed=%7B%22af%22%3Atrue%2C%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="853" height="480" frameborder="0" scrolling="no" allowfullscreen title="Enregistrement-20250128_171407.webm"></iframe>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Effets émergents (2)
+</div></script></section></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":true,"transition":"slide","transitionSpeed":"fast"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
